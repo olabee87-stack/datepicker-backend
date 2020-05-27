@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const PORT = 8010;
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -21,6 +22,10 @@ db.on("error", (err) => {
 db.on("open", () => {
   console.log(`Successfully connected to the DB`);
 });
+
+//View engine
+app.set("view engine", "ejs");
+app.set("views", __dirname + "/api/views");
 
 // Body parser middlewaare
 app.use(bodyParser.urlencoded({ extended: "false" }));

@@ -16,6 +16,6 @@ const userSchema = new Schema({
 userSchema.plugin(findOrCreate);
 
 //Creating an instance of userSchema declared above(line 9)and using it within your db
-const User = mongoose.model("User", userSchema);
+const Eventuser = mongoose.model("Eventuser", userSchema);
 
-module.exports = User;
+module.exports = Eventuser;

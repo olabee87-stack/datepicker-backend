@@ -33,16 +33,12 @@ router.get("/logout", (req, res) => {
 
 //New users are directed here and upon registration, to the login page
 //router.get("/register", redirect.loginUser, userController.register);
-router.get("/register", (req, res) => {
-  res.send("Register here");
-});
+router.get("/register", userController.register);
 
 //Add logic to authenticate user
 //The data info input by user on the register page is sent/posted to the backend/db
 //router.post("/register/send", userController.sendRegister);
-router.post("/register/send", (req, res) => {
-  res.send("A user has registered");
-});
+router.post("/register/send", userController.sendRegister);
 
 //router.post("/score/send", scoreController.sendScore);
 
