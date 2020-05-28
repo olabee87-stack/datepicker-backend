@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const Eventuser = require("../models/user");
+const Event = require("../models/user");
 
 module.exports.home = (req, res) => {
   res.render("pages/home");
