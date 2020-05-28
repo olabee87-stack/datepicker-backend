@@ -3,22 +3,9 @@ const router = express.Router();
 const path = require("path");
 const Eventuser = require("../models/user");
 
-//const Score = require("../models/score-model");
-
-// module.exports.home = (req, res) => {
-//   Score.find({}, (err, records) => {
-//     if (err) {
-//       console.log("Error encountered while fetching score from DB");
-//     }
-//     if (records.length === 0) {
-//       console.log("There is no record of score found from DB. ");
-//     }
-//     res.render("pages/home", {
-//       firstname: req.user.firstname,
-//       scores: records,
-//     });
-//   });
-// };
+module.exports.home = (req, res) => {
+  res.render("pages/home");
+};
 
 module.exports.login = (req, res) => {
   res.render("pages/login");
