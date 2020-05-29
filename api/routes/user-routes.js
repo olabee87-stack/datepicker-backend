@@ -15,8 +15,8 @@ router.post(
   })
 );
 
-//create a new post with the model Post and submit
-router.post("/event", eventController.sendEvent, async (req, res) => {
+// //create a new post with the model Event and submit
+router.post("/event", async (req, res) => {
   const event = new Event({
     title: req.body.title,
     username: req.body.username,
@@ -44,7 +44,7 @@ router.get("/logout", userController.logout);
 
 //New users are directed here and upon registration, to the login page
 router.get("/register", redirect.loginUser, userController.register);
-router.post("/event", eventController.sendEvent);
+// router.post("/event", eventController.sendEvent);
 //Add logic to authenticate user
 //The data info input by user on the register page is sent/posted to the backend/db
 router.post("/register/send", userController.sendRegister);

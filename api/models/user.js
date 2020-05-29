@@ -16,20 +16,20 @@ const userSchema = new Schema({
 });
 
 // //Event schema
-// const eventSchema = new Schema({
-//   _id: Schema.Types.ObjectId,
-//   username: { type: Schema.Types.ObjectId, ref: "Eventuser" },
-//   //username: { type: String, required: true },
-//   title: { type: String, required: true },
-//   description: { type: String, required: true },
-//   date: { type: Number, required: true },
-//   eventposts: [{ type: Schema.Types.ObjectId, ref: "Eventuser" }],
-// });
+const eventSchema = new Schema({
+  _id: Schema.Types.ObjectId,
+  username: { type: Schema.Types.ObjectId, ref: "Eventuser" },
+  //username: { type: String, required: true },
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  date: { type: Number, required: true },
+  eventposts: [{ type: Schema.Types.ObjectId, ref: "Eventuser" }],
+});
 
 //updated the schema to use this method
 userSchema.plugin(findOrCreate);
 
-//Creating an instance of userSchema declared above(line 9)and using it within your db
+//Creating an instance of userSchema declared above
 const Eventuser = mongoose.model("Eventuser", userSchema);
 // const Event = mongoose.model("Event", eventSchema);
 

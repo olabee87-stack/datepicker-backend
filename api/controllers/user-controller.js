@@ -5,7 +5,7 @@ const Eventuser = require("../models/user");
 const Event = require("../models/user");
 
 module.exports.home = (req, res) => {
-  res.render("pages/home");
+  res.render("/register/send");
 };
 
 module.exports.login = (req, res) => {

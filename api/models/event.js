@@ -5,8 +5,6 @@ const Eventuser = require("../models/user");
 //Event schema
 const eventSchema = new Schema({
   // _id: Schema.Types.ObjectId,
-  personId: {type: Number, ref: 'Eventuser'},
-  username: { type: Schema.Types.ObjectId, ref: "Eventuser" },
   username: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
