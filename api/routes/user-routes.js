@@ -16,7 +16,7 @@ router.post(
 );
 
 //create a new post with the model Post and submit
-router.post("/event", async (req, res) => {
+router.post("/event", eventController.sendEvent, async (req, res) => {
   const event = new Event({
     title: req.body.title,
     username: req.body.username,

@@ -26,8 +26,8 @@ db.on("open", () => {
 });
 
 //View engine
-app.set("view engine", "ejs");
-app.set("views", __dirname + "/api/views");
+// app.set("view engine", "ejs");
+// app.set("views", __dirname + "/api/views");
 
 // Body parser middlewaare
 app.use(bodyParser.urlencoded({ extended: "false" }));
@@ -43,7 +43,15 @@ app.use("/", userRoutes);
 
 //FRONTEND
 const FRONTEND_ORIGIN = "http://localhost:3000";
-
+//allow chrome to do ajax call
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", FRONTEND_ORIGIN);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
+  next();
+})
+//parse json bodies
+app.use(express.json());
 //Localhost port
 app.listen(PORT, () => {
   console.log(`Server has started on port ${PORT}`);
