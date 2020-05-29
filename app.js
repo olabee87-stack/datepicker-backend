@@ -6,6 +6,7 @@ const PORT = 8010;
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRoutes = require("./api/routes/user-routes");
+const eventRoutes = require("./api/routes/event-routes");
 const initPassport = require("./init-passport"); //importing module
 
 //Database connection
@@ -40,6 +41,7 @@ initPassport(passport);
 
 //Route
 app.use("/", userRoutes);
+app.use("/", eventRoutes);
 
 //FRONTEND
 const FRONTEND_ORIGIN = "http://localhost:3000";

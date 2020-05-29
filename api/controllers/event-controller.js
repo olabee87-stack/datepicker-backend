@@ -3,7 +3,8 @@ const Event = require("../models/event");
 
 module.exports.sendEvent = (req, res) => {
   Event.findOrCreate(
-    { username: req.user.username },
+    { eventUserId: Eventuser._id },
+    //{ username: req.body.Eventuser.username },
     (err, record, created) => {
       if (err) {
         console.log(

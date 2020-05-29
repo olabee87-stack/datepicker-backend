@@ -4,12 +4,11 @@ const Schema = mongoose.Schema;
 const Eventuser = require("../models/user");
 //Event schema
 const eventSchema = new Schema({
-  _id: Schema.Types.ObjectId,
-  username: { type: Schema.Types.ObjectId, ref: "Eventuser" },
-  //username: { type: String, required: true },
+  username: { type: String, ref: "Eventuser" },
   title: { type: String, required: true },
   description: { type: String, required: true },
-  date: { type: Number, required: true },
+  date: { type: Date, required: true },
+  eventUserId: { type: String, ref: "Eventuser" },
   eventposts: [{ type: Schema.Types.ObjectId, ref: "Eventuser" }],
 });
 

@@ -28,7 +28,7 @@ const userSchema = new Schema({
 //updated the schema to use this method
 userSchema.plugin(findOrCreate);
 
-//Creating an instance of userSchema declared above(line 9)and using it within your db
+//Creating an instance of userSchema declared above
 const Eventuser = mongoose.model("Eventuser", userSchema);
 // const Event = mongoose.model("Event", eventSchema);
 
