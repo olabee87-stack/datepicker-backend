@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 //Instance of the mongoose schema
 const userSchema = new Schema({
-  _id: Schema.Types.ObjectId,
+ // _id: Schema.Types.ObjectId,
   firstname: { type: String, required: true },
   lastname: { type: String, required: true },
   username: { type: String, required: true },

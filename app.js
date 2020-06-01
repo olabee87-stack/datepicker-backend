@@ -8,7 +8,18 @@ const mongoose = require("mongoose");
 const userRoutes = require("./api/routes/user-routes");
 const eventRoutes = require("./api/routes/event-routes");
 const initPassport = require("./init-passport"); //importing module
+var cors = require('cors');
+//const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
+//app.use(cors())
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
 //Database connection
 mongoose.connect(
   "mongodb+srv://olabisi:coding@node-projects-qyzht.mongodb.net/grocerydb?retryWrites=true&w=majority",
@@ -27,11 +38,11 @@ db.on("open", () => {
 });
 
 //View engine
-app.set("view engine", "ejs");
-app.set("views", __dirname + "/api/views");
+// app.set("view engine", "ejs");
+// app.set("views", __dirname + "/api/views");
 
 // Body parser middlewaare
-app.use(bodyParser.urlencoded({ extended: "false" }));
+//app.use(bodyParser.urlencoded({ extended: "true" }));
 app.use(session({ secret: "cats" }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -45,6 +56,15 @@ app.use("/", eventRoutes);
 
 //FRONTEND
 const FRONTEND_ORIGIN = "http://localhost:3000";
+//allow chrome to do ajax call
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", FRONTEND_ORIGIN);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
+  next();
+})
+//parse json bodies
+//app.use(express.json());
 
 //Localhost port
 app.listen(PORT, () => {

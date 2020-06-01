@@ -35,15 +35,15 @@ router.post(
 // });
 
 //Only logged in users can reach this end point
-router.get("/", redirect.nonLoginUser, userController.home);
+router.get("/", redirect.nonLoginUser);
 
 //Only already registered users can reach this end point, if unregistered, redirect to register route
-router.get("/login", redirect.loginUser, userController.login);
+router.get("/login", redirect.loginUser);
 
-router.get("/logout", userController.logout);
+router.get("/logout");
 
 //New users are directed here and upon registration, to the login page
-router.get("/register", redirect.loginUser, userController.register);
+router.get("/register", redirect.loginUser);
 // router.post("/event", eventController.sendEvent);
 //Add logic to authenticate user
 //The data info input by user on the register page is sent/posted to the backend/db

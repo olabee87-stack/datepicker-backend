@@ -1,25 +1,32 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const Eventuser = require("../models/user");
 const Event = require("../models/user");
+const Eventuser = require("../models/user")
 
-module.exports.home = (req, res) => {
-  res.render("pages/home");
-};
 
-module.exports.login = (req, res) => {
-  res.render("pages/login");
-};
+// module.exports.home = (req, res) => {
+//   //res.render("pages/home");
+//   res.render("/")
+// };
 
-module.exports.logout = (req, res) => {
-  req.logout();
-  res.redirect("/login");
-};
+// module.exports.login = (req, res) => {
+//   //res.render("pages/login");
+//   res.render("/")
+// };
 
-module.exports.register = (req, res) => {
-  res.render("pages/register");
-};
+
+
+// module.exports.logout = (req, res) => {
+//   req.logout();
+//   //res.redirect("/login");
+//   res.redirect("/")
+// };
+
+// module.exports.register = (req, res) => {
+//   //res.render("pages/register");
+//   res.render("")
+// };
 
 module.exports.sendRegister = (req, res) => {
   Eventuser.findOrCreate(
@@ -35,15 +42,15 @@ module.exports.sendRegister = (req, res) => {
         record.email = req.body.email;
         record.password = req.body.password;
 
-        record
+       record
           .save()
           .then((data) => {
             console.log(`Saved new user to DB: ${data}`);
-            res.redirect("/login");
+            //res.redirect("/");
           })
           .catch((err) => {
             console.log(`Error occured while registering new user: ${err}`);
-            res.redirect("/register");
+           // res.redirect("/");
           });
       } else {
         console.log(`Record with username found ${req.body.username} found.`);
@@ -55,3 +62,26 @@ module.exports.sendRegister = (req, res) => {
     }
   );
 };
+
+
+
+//create a new post with the model Post and submit
+// module.exports.sendRegister = (req, res) => {
+
+//   const post = new Eventuser({
+//     firstname: req.body.firstname,
+//     lastname: req.body.lastname,
+//     username: req.body.username,
+//     email: req.body.email,
+//     password: req.body.password,
+//   });
+
+//   // save the post and catch if there is an error
+//   try {
+//     const savedPost = post.save();
+//     res.status(201).json(savedPost);
+//   } catch (err) {
+//     res.status(404).json({ message: err });
+//   }
+// };
+
