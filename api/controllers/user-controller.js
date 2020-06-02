@@ -2,20 +2,16 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const Event = require("../models/user");
-const Eventuser = require("../models/user")
+const Eventuser = require("../models/user");
 
-
-// module.exports.home = (req, res) => {
-//   //res.render("pages/home");
-//   res.render("/")
-// };
+module.exports.home = (req, res) => {
+  return res.json("http://localhost:3000/");
+};
 
 // module.exports.login = (req, res) => {
 //   //res.render("pages/login");
 //   res.render("/")
 // };
-
-
 
 // module.exports.logout = (req, res) => {
 //   req.logout();
@@ -42,7 +38,7 @@ module.exports.sendRegister = (req, res) => {
         record.email = req.body.email;
         record.password = req.body.password;
 
-       record
+        record
           .save()
           .then((data) => {
             console.log(`Saved new user to DB: ${data}`);
@@ -50,7 +46,7 @@ module.exports.sendRegister = (req, res) => {
           })
           .catch((err) => {
             console.log(`Error occured while registering new user: ${err}`);
-           // res.redirect("/");
+            // res.redirect("/");
           });
       } else {
         console.log(`Record with username found ${req.body.username} found.`);
@@ -62,8 +58,6 @@ module.exports.sendRegister = (req, res) => {
     }
   );
 };
-
-
 
 //create a new post with the model Post and submit
 // module.exports.sendRegister = (req, res) => {
@@ -84,4 +78,3 @@ module.exports.sendRegister = (req, res) => {
 //     res.status(404).json({ message: err });
 //   }
 // };
-
