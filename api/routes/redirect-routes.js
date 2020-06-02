@@ -1,6 +1,6 @@
 module.exports.loginUser = (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.redirect("/");
+    res.redirect("http://localhost:3000");
   } else {
     //Go to the next param if function not fullfilled
     next();
