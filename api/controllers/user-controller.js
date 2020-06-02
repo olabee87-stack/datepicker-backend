@@ -4,7 +4,8 @@ const path = require("path");
 const Eventuser = require("../models/user");
 
 module.exports.home = (req, res) => {
-  res.render("pages/home");
+  res.render("http://localhost:3000");
+  //res.render("pages/home");
 };
 
 module.exports.login = (req, res) => {
@@ -17,7 +18,8 @@ module.exports.logout = (req, res) => {
 };
 
 module.exports.register = (req, res) => {
-  res.render("pages/register");
+  //res.render("pages/register");
+  res.render("http://localhost:3000/register");
 };
 
 module.exports.sendRegister = (req, res) => {
