@@ -6,6 +6,7 @@ const router = require("express").Router();
 const redirect = require("./redirect-routes");
 const passport = require("passport");
 const bodyParser = require("body-parser");
+const chalk = require("chalk");
 
 // //create a new post with the model Event and submit
 // router.post("/event", async (req, res) => {
@@ -52,18 +53,19 @@ router.post("/register/send", userController.sendRegister);
 // );
 
 router.post("/login/send", function (req, res) {
-  // console.log("User login post request");
-  // console.log(req.body.username);
   Eventuser.findOne(
     { username: req.body.username, password: req.body.password },
     function (err, user, pass) {
       if (err) {
         console.log("There is an error posting this request: ", err);
       } else if (!user && !pass) {
-        console.log("Fake username and password");
+        console.log("The username and password is incorrect");
         return res.status(404).send({ message: "User Not found." });
       } else {
-        console.log(user);
+        //console.log(user);
+        console.log(
+          `The username: "${user.username}" with Password: "${user.password}" has logged in`
+        );
         console.log("User found in database");
         return res.json(user);
       }
