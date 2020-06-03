@@ -28,4 +28,56 @@ router.post("/event", async (req, res) => {
 });
 router.post("/event", eventController.sendEvent);
 
+
+//code to get all events
+router.get("/event", async (req, res) => {
+  try {
+    // return all the posts or can make a limit
+    const events = await Event.find();
+    res.json(events);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
+router.get("/event/:id", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id)
+    res.json(post);
+  } catch (err) {
+    res.status(404).json({ message: err });
+  }
+});
+
+//delete the event
+router.delete("/:eventId", async (req, res) => {
+  try {
+    const removeEvent = await Event.deleteOne({ _id: req.params.eventId });
+    res.json(removeEvent);
+  } catch (err) {
+    //res.json({ message: err });
+    res.status(204).json({ message: err });
+  }
+});
+// update the event
+router.patch("/:eventId", async (req, res) => {
+  try {
+    const updateEvent = await Event.updateOne(
+      { _id: req.params.eventId },
+      {
+        $set: {
+          title: req.body.title,
+    username: req.body.username,
+    description: req.body.description,
+    date: req.body.date,
+    eventposts: req.body.eventposts,
+        },
+      }
+    );
+    res.json(updateEvent);
+  } catch (err) {
+    //res.json({ message: err });
+    res.status(404).json({ message: err });
+  }
+});
 module.exports = router;
