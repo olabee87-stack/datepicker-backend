@@ -7,28 +7,9 @@ const redirect = require("./redirect-routes");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const chalk = require("chalk");
-
-// //create a new post with the model Event and submit
-// router.post("/event", async (req, res) => {
-//   const event = new Event({
-//     title: req.body.title,
-//     username: req.body.username,
-//     description: req.body.description,
-//     date: req.body.date,
-//     eventposts: req.body.eventposts,
-//   });
-
-//   // save the post and catch if there is an error
-//   try {
-//     const savedEvent = await event.save();
-//     res.status(201).json(savedEvent);
-//   } catch (err) {
-//     res.status(404).json({ message: err });
-//   }
-// });
+const nodeMailer = require("nodemailer");
 
 //ROUTES
-
 //Only logged in users can reach this end point
 router.get("/", redirect.nonLoginUser);
 
@@ -51,6 +32,40 @@ router.post("/register/send", userController.sendRegister);
 //     failureRedirect: "/login",
 //   })
 // );
+
+router.post("/register/send", (req, res) => {
+  //Creating a reusable transporter object
+  let transporter = nodeMailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: req.body.username, //"olabisi.odusanya",
+      pass: req.body.password, //"pass",
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+  let mailOptions = {
+    to: "olabisi.odusanyaa@gmail.com",
+    subject: req.body.subject,
+    body: req.body.message,
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log("Message %s sent: %s", info.messageId, info.response);
+    console.log("Message %s sent: %s", nodemailer.getTestMessageUrl(info));
+    res.render("http://localhost:3000/register/", {
+      msg: "You have successfully created an account",
+    });
+  });
+
+  res.writeHead(301, { Location: "http://localhost:3000/register/send/" });
+  res.end();
+});
 
 router.post("/login/send", function (req, res) {
   Eventuser.findOne(
