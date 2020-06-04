@@ -61,41 +61,63 @@ module.exports.home = (req, res) => {
 
 
 
-module.exports.sendRegister = (req, res) => {
-  Eventuser.findOne(
-    { username: req.body.username },
-    (err, user) => {
-      if (err) {
-        console.log(`An error has occured while registering new user ${err}`);
-      }
+// module.exports.sendRegister = (req, res) => {
+//   Eventuser.findOne(
+//     { username: req.body.username },
+//     (err, user) => {
+//       if (err) {
+//         console.log(`An error has occured while registering new user ${err}`);
+//       } 
+//       if (!user) {
+//         user = new Eventuser({
+//           firstname: req.body.firstname,
+//           lastname: req.body.lastname,
+//           username: req.body.username,
+//           email: req.body.email,
+//           password: req.body.password,
+//       });
+//       user.save()
+//       .then((data) => {
+//         console.log(`Saved new user to DB: ${data}`);
+//        })
+//        .catch((err) => {
+//       console.log(`Error occured while registering new user: ${err}`);
+//        });
+//       }
+//       if (user) {
+//         console.log(`Record with username found ${req.body.username} found.`);
+//         //Send this to client if username has already been taken
+//         //return res.send(err);
+//         return res.status(404).send({ message: "User already exists." });
+//       }
+//     }
+//   );
+// };
 
 
-      
-      if (!user) {
-        user = new Eventuser({
-          firstname: req.body.firstname,
-          lastname: req.body.lastname,
-          username: req.body.username,
-          email: req.body.email,
-          password: req.body.password,
-      });
-      user.save()
-      .then((data) => {
-        console.log(`Saved new user to DB: ${data}`);
-       })
-       .catch((err) => {
-      console.log(`Error occured while registering new user: ${err}`);
+
+module.exports.sendRegister = async (req, res) => {
+   // Check if this user already exisits
+   let user = await Eventuser.findOne({ username: req.body.username });
+   if (user) {
+       return res.status(400).send('That user already exisits!');
+   } else {
+       // Insert the new user if they do not exist yet
+       user = new Eventuser({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
        });
-      }
-      if (user) {
-        console.log(`Record with username found ${req.body.username} found.`);
-        //Send this to client if username has already been taken
-        return res.send(err);
-        //return res.status(404).send({ message: "User already exists." });
-      }
-    }
-  );
-};
+       await user.save();
+       res.send(user);
+   }
+}
+// );
+// }
+
+
 //create a new post with the model Post and submit
 // module.exports.sendRegister = (req, res) => {
 
