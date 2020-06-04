@@ -15,7 +15,6 @@ module.exports.sendEvent = (req, res) => {
 
       record
         .save()
-
         .then((data) => {
           console.log(`Saved new event to the DB: ${data}`);
           res.redirect("/");

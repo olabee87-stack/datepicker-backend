@@ -68,6 +68,9 @@ module.exports.sendRegister = (req, res) => {
       if (err) {
         console.log(`An error has occured while registering new user ${err}`);
       }
+
+
+      
       if (!user) {
         user = new Eventuser({
           firstname: req.body.firstname,
@@ -87,7 +90,8 @@ module.exports.sendRegister = (req, res) => {
       if (user) {
         console.log(`Record with username found ${req.body.username} found.`);
         //Send this to client if username has already been taken
-        return res.status(404).send({ message: "Username already exists." });
+        return res.send(err);
+        //return res.status(404).send({ message: "User already exists." });
       }
     }
   );
