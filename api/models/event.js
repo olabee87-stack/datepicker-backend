@@ -8,8 +8,8 @@ const eventSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   date: { type: Date, required: true },
-  eventUserId: { type: String, ref: "Eventuser" },
-  eventposts: [{ type: Schema.Types.ObjectId, ref: "Eventuser" }],
+  //eventUserId: { type: String, ref: "Eventuser" },
+  //eventposts: [{ type: Schema.Types.ObjectId, ref: "Eventuser" }],
 });
 
 const Event = mongoose.model("Event", eventSchema);
