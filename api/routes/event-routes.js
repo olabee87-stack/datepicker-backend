@@ -10,12 +10,12 @@ const bodyParser = require("body-parser");
 //create a new post with the model Event and submit
 router.post("/event", async (req, res) => {
   const event = new Event({
-    eventUserId: Eventuser._id,
+    //eventUserId: Eventuser._id,
     title: req.body.title,
     username: req.body.username,
     description: req.body.description,
     date: req.body.date,
-    eventposts: req.body.eventposts,
+    //eventposts: req.body.eventposts,
   });
 
   // save the post and catch if there is an error
@@ -39,11 +39,11 @@ router.get("/event", async (req, res) => {
     res.json({ message: err });
   }
 });
-
+//code to get one event
 router.get("/event/:id", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id)
-    res.json(post);
+    const event = await Event.findById(req.params.id)
+    res.json(event);
   } catch (err) {
     res.status(404).json({ message: err });
   }
@@ -70,7 +70,7 @@ router.patch("/:eventId", async (req, res) => {
     username: req.body.username,
     description: req.body.description,
     date: req.body.date,
-    eventposts: req.body.eventposts,
+    //eventposts: req.body.eventposts,
         },
       }
     );
