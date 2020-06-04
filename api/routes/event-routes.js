@@ -22,6 +22,7 @@ router.post("/event", async (req, res) => {
   try {
     const savedEvent = await event.save();
     res.status(201).json(savedEvent);
+    console.log(savedEvent);
   } catch (err) {
     res.status(404).json({ message: err });
   }
