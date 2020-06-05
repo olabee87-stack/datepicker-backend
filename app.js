@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./api/routes/user-routes");
 const eventRoutes = require("./api/routes/event-routes");
 const initPassport = require("./init-passport"); //importing module
-var cors = require('cors');
+const cors=require('cors');
 //const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
