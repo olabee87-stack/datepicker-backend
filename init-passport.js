@@ -7,16 +7,20 @@ module.exports = (passport) => {
     Eventuser.findOne({ username: username }, (err, record) => {
       if (err) {
         return done(err);
+        
       }
 
       if (!record) {
         return done(null, false, { message: "Incorrect username" });
+        
       }
 
       if (record.password !== password) {
         return done(null, false, { message: "Incorrect password." });
+      
       }
-      return done(null, record);
+     return done(null, record);
+    
     });
   }
 
@@ -32,6 +36,7 @@ module.exports = (passport) => {
     Eventuser.findById(id, (err, record) => {
       if (err) {
         done(err);
+        
       }
       if (record) {
         done(null, record);

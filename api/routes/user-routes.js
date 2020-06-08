@@ -10,15 +10,14 @@ const cors=require('cors');
 //ROUTES
 
 //Only logged in users can reach this end point
-router.get("/", redirect.nonLoginUser);
-
+router.get('/event', redirect.nonLoginUser);
 //Only already registered users can reach this end point, if unregistered, redirect to register route
-router.get("/login", redirect.loginUser);
+router.get("/login", redirect.loginUser, userController.login);
 
-router.get("/logout");
-
+//router.get("/logout");
+router.get('/logout', userController.logout);
 //New users are directed here and upon registration, to the login page
-router.get("/register", redirect.loginUser);
+router.get("/register", redirect.loginUser, userController.register);
 
 //Add logic to authenticate user
 //The data info input by user on the register page is sent/posted to the backend/db
