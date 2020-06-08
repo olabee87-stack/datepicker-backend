@@ -7,20 +7,16 @@ module.exports = (passport) => {
     Eventuser.findOne({ username: username }, (err, record) => {
       if (err) {
         return done(err);
-        
       }
 
       if (!record) {
         return done(null, false, { message: "Incorrect username" });
-        
       }
 
       if (record.password !== password) {
         return done(null, false, { message: "Incorrect password." });
-      
       }
-     return done(null, record);
-    
+      return done(null, record);
     });
   }
 
@@ -28,15 +24,14 @@ module.exports = (passport) => {
 
   //Serializing user
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user._id);
   });
 
   //Deserialize user
-  passport.deserializeUser((id, done) => {
-    Eventuser.findById(id, (err, record) => {
+  passport.deserializeUser((_id, done) => {
+    Eventuser.findById(_id, (err, record) => {
       if (err) {
         done(err);
-        
       }
       if (record) {
         done(null, record);
