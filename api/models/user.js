@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const Event = require("../models/event");
-const findOrCreate = require("mongoose-findorcreate");
+//const Event = require("../models/event");
+//const findOrCreate = require("mongoose-findorcreate");
+//const findOne = require("mongoose-findone");
 const Schema = mongoose.Schema;
 
 //Instance of the mongoose schema
@@ -11,7 +12,7 @@ const userSchema = new Schema({
   username: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  eventposts: [{ type: Schema.Types.ObjectId, ref: "Event" }],
+  //eventposts: [{ type: Schema.Types.ObjectId, ref: "Event" }],
 });
 
 // //Event schema
@@ -26,8 +27,8 @@ const userSchema = new Schema({
 // });
 
 //updated the schema to use this method
-userSchema.plugin(findOrCreate);
-
+//userSchema.plugin(findOrCreate);
+//userSchema.plugin(findOne);
 //Creating an instance of userSchema declared above
 const Eventuser = mongoose.model("Eventuser", userSchema);
 // const Event = mongoose.model("Event", eventSchema);

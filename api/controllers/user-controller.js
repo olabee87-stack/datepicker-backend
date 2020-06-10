@@ -4,20 +4,20 @@ const path = require("path");
 const Event = require("../models/user");
 const Eventuser = require("../models/user");
 
-module.exports.home = (req, res) => {
-  return res.json("http://localhost:3000/");
+module.exports.event = (req, res) => {
+  return res.json("http://localhost:3000/event");
 };
 
-// module.exports.login = (req, res) => {
-//   //res.render("pages/login");
-//   res.render("/")
-// };
-
-// module.exports.logout = (req, res) => {
-//   req.logout();
-//   //res.redirect("/login");
-//   res.redirect("/")
-// };
+module.exports.login = (req, res) => {
+  res.json("http://localhost:3000/login")
+};
+module.exports.register = (req, res) => {
+  res.json("http://localhost:3000/register")
+};
+module.exports.logout = (req, res) => {
+  req.logout();
+  res.json("http://localhost:3000/login");
+};
 
 // module.exports.register = (req, res) => {
 //   //res.render("pages/register");

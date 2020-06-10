@@ -29,7 +29,6 @@ router.post("/event", async (req, res) => {
 });
 router.post("/event", eventController.sendEvent);
 
-
 //code to get all events
 router.get("/event", async (req, res) => {
   try {
@@ -40,10 +39,11 @@ router.get("/event", async (req, res) => {
     res.json({ message: err });
   }
 });
+
 //code to get one event
 router.get("/event/:id", async (req, res) => {
   try {
-    const event = await Event.findById(req.params.id)
+    const event = await Event.findById(req.params.id);
     res.json(event);
   } catch (err) {
     res.status(404).json({ message: err });
@@ -51,7 +51,7 @@ router.get("/event/:id", async (req, res) => {
 });
 
 //delete the event
-router.delete("/:eventId", async (req, res) => {
+router.delete("/event/:eventId", async (req, res) => {
   try {
     const removeEvent = await Event.deleteOne({ _id: req.params.eventId });
     res.json(removeEvent);
@@ -60,18 +60,19 @@ router.delete("/:eventId", async (req, res) => {
     res.status(204).json({ message: err });
   }
 });
+
 // update the event
-router.patch("/:eventId", async (req, res) => {
+router.patch("/event/:eventId", async (req, res) => {
   try {
     const updateEvent = await Event.updateOne(
       { _id: req.params.eventId },
       {
         $set: {
           title: req.body.title,
-    username: req.body.username,
-    description: req.body.description,
-    date: req.body.date,
-    //eventposts: req.body.eventposts,
+          username: req.body.username,
+          description: req.body.description,
+          date: req.body.date,
+          //eventposts: req.body.eventposts,
         },
       }
     );

@@ -24,12 +24,12 @@ module.exports = (passport) => {
 
   //Serializing user
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user._id);
   });
 
   //Deserialize user
-  passport.deserializeUser((id, done) => {
-    Eventuser.findById(id, (err, record) => {
+  passport.deserializeUser((_id, done) => {
+    Eventuser.findById(_id, (err, record) => {
       if (err) {
         done(err);
       }
