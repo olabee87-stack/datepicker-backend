@@ -15,6 +15,7 @@ router.post("/event", async (req, res) => {
     username: req.body.username,
     description: req.body.description,
     date: req.body.date,
+    likes: req.body.likes
     //eventposts: req.body.eventposts,
   });
 
@@ -72,6 +73,7 @@ router.patch("/event/:eventId", async (req, res) => {
           username: req.body.username,
           description: req.body.description,
           date: req.body.date,
+          likes: req.body.likes
           //eventposts: req.body.eventposts,
         },
       }
