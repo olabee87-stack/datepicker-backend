@@ -50,10 +50,14 @@ router.get("/event/:id", async (req, res) => {
   }
 });
 
+//add like to the event
+
 //delete the event
 router.delete("/event/:eventId", async (req, res) => {
   try {
-    const removeEvent = await Event.deleteOne({ _id: req.params.eventId });
+    const removeEvent = await Event.findByIdAndDelete({
+      _id: req.params.eventId,
+    });
     res.json(removeEvent);
   } catch (err) {
     //res.json({ message: err });
@@ -72,6 +76,7 @@ router.patch("/event/:eventId", async (req, res) => {
           username: req.body.username,
           description: req.body.description,
           date: req.body.date,
+
           //eventposts: req.body.eventposts,
         },
       }

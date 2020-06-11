@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 const findOrCreate = require("mongoose-findorcreate");
 const Schema = mongoose.Schema;
+const voting = require("mongoose-voting");
 //const Eventuser = require("../models/user");
 //Event schema
 const eventSchema = new Schema({
   username: {
     type: ObjectId,
-    ref: 'Eventuser',
+    ref: "Eventuser",
   },
   title: { type: String, required: true },
   description: { type: String, required: true },
