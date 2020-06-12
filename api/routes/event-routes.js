@@ -69,10 +69,6 @@ router.patch("/event/:eventId", async (req, res) => {
       { _id: req.params.eventId },
       {
         $set: {
-          title: req.body.title,
-          username: req.body.username,
-          description: req.body.description,
-          date: req.body.date,
           likes: req.body.likes
           //eventposts: req.body.eventposts,
         },
