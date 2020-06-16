@@ -58,7 +58,7 @@ app.use("/", userRoutes);
 app.use("/", eventRoutes);
 
 //FRONTEND
-const FRONTEND_ORIGIN = "https://datepicker-frontend.herokuapp.com/";
+const FRONTEND_ORIGIN = "https://datepicker-frontend.herokuapp.com";
 //allow chrome to do ajax call
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", FRONTEND_ORIGIN);
