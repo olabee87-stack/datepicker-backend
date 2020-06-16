@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
-const path = require("path");
-const Event = require("../models/user");
+//const express = require("express");
+//const router = express.Router();
+//const path = require("path");
+//const Event = require("../models/user");
 const Eventuser = require("../models/user");
 
 module.exports.event = (req, res) => {

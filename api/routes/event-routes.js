@@ -1,11 +1,11 @@
 const eventController = require("../controllers/event-controller");
-const userController = require("../controllers/user-controller");
+//const userController = require("../controllers/user-controller");
 const Event = require("../models/event");
-const Eventuser = require("../models/user");
+//const Eventuser = require("../models/user");
 const router = require("express").Router();
-const redirect = require("./redirect-routes");
-const passport = require("passport");
-const bodyParser = require("body-parser");
+//const redirect = require("./redirect-routes");
+//const passport = require("passport");
+//const bodyParser = require("body-parser");
 
 //create a new post with the model Event and submit
 router.post("/event", async (req, res) => {
