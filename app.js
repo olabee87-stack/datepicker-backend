@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 //app.use(cors())
 app.use(
   cors({
-    origin: 'https://datepicker-frontend.herokuapp.com',
+    origin: 'https://datepicker-frontend.herokuapp.com/event',
     credentials: true,
   })
 );
@@ -58,7 +58,7 @@ app.use("/", userRoutes);
 app.use("/", eventRoutes);
 
 //FRONTEND
-const FRONTEND_ORIGIN = "https://datepicker-frontend.herokuapp.com/";
+const FRONTEND_ORIGIN = "https://datepicker-frontend.herokuapp.com/event";
 //allow chrome to do ajax call
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", FRONTEND_ORIGIN);
