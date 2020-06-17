@@ -7,12 +7,12 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
   username: {
     type: ObjectId,
-    ref: 'Eventuser',
+    ref: "Eventuser",
   },
   title: { type: String, required: true },
   description: { type: String, required: true },
   date: { type: String, required: true },
-  likes: { type: Number }
+  likes: { type: Number, default: 0 },
 });
 
 const Event = mongoose.model("Event", eventSchema);
