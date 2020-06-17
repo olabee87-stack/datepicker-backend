@@ -2,9 +2,13 @@
   "name": "datepicker-backend",
   "version": "1.0.0",
   "description": "\"# datepicker-backend\"",
-  "main": "index.js",
+  "engines": {
+    "node": "12.16.1",
+    "npm": "6.13.4"
+  },
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

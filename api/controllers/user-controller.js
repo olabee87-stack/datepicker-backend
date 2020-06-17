@@ -5,18 +5,18 @@ const Event = require("../models/user");
 const Eventuser = require("../models/user");
 
 module.exports.event = (req, res) => {
-  return res.json("http://localhost:3000/event");
+  return res.json("https://datepicker-frontend.herokuapp.com/event");
 };
 
 module.exports.login = (req, res) => {
-  res.json("http://localhost:3000/login")
+  res.json("https://datepicker-frontend.herokuapp.com/login")
 };
 module.exports.register = (req, res) => {
-  res.json("http://localhost:3000/register")
+  res.json("https://datepicker-frontend.herokuapp.com/register")
 };
 module.exports.logout = (req, res) => {
   req.logout();
-  res.json("http://localhost:3000/login");
+  res.json("https://datepicker-frontend.herokuapp.com/login");
 };
 
 // module.exports.register = (req, res) => {
