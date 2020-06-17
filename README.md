@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#"Datepicker-backend"
-=======
 # "Datepicker-backend"
->>>>>>> f42b4a61d1974a2819c4fe078bfb89c6cff0d470
 
 ## Development
 
