@@ -12,7 +12,7 @@ const eventSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   date: { type: String, required: true },
-  likes: { type: Number, default: 0 },
+  likes: { type: Number, default: null },
 });
 
 const Event = mongoose.model("Event", eventSchema);
